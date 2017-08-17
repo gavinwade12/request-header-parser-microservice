@@ -1,27 +1,15 @@
-Welcome to the Glitch BETA
+Request Header Parser Microservice
 =========================
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
+Returns the IP Address, Language, and Software of the client.
 
-**Glitch** is the friendly commmunity where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
+Make a `GET` request to `/`.
+The response is of the form:
 
-Find out more [about Glitch](https://glitch.com/about).
-
-
-Your Project
-------------
-
-On the front-end,
-- edit `public/client.js`, `public/style.css` and `views/index.html`
-- drag in `assets`, like images or music, to add them to your project
-
-On the back-end,
-- your app starts at `server.js`
-- add frameworks and packages in `package.json`
-- safely store app secrets in `.env` (nobody can see this but you and people you invite)
-
-
-Made by [Fog Creek](https://fogcreek.com/)
--------------------
-
-\ ゜o゜)ノ
+```
+{
+  "ipaddress": "144.191.148.10",
+  "language": "en-US",
+  "software": "Windows NT 6.1; WOW64"
+}
+```
