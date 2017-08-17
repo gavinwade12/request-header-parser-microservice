@@ -2,8 +2,15 @@ var express = require('express');
 var app = express();
 
 app.get("/", (req, res) => {
-  let ipaddress = '';
-  let forwardedFor = req.headers['x-fo']
+  let ipAddress = '';
+  let forwardedFor = req.headers['x-forwarded-for'];
+  if (forwardedFor)
+    ipAddress = forwardedFor.split(',')[0];
+  
+  let language = '';
+  let acceptLanguage = req.headers['accept-language'];
+  if (acceptLanguage)
+    language = acceptLanguage.split(',')[0];
   
   let software = '';
   let softwareExpression = /.*?\((.*?)\).*/;
@@ -12,8 +19,8 @@ app.get("/", (req, res) => {
     software = matches[1];
   
   const data = {
-    ipaddress: req.headers['x-forwarded-for'].split(',')[0],
-    language: req.headers['accept-language'].split(',')[0],
+    ipaddress: ipAddress,
+    language: language,
     software: software
   };
   
